@@ -12,14 +12,7 @@ A professional URL shortener API built with Node.js, Express, and MongoDB. This 
 
 ## Installation
 
-1.  **Clone the repository:**
-
-    ```bash
-    git clone https://github.com/gitzoheb/url-shortener-api.git
-    cd url-shortener-api
-    ```
-
-2.  **Install dependencies:**
+1.  **Install dependencies:**
 
     ```bash
     npm install
