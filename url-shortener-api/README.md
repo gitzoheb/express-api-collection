@@ -15,7 +15,7 @@ A professional URL shortener API built with Node.js, Express, and MongoDB. This 
 1.  **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/url-shortener-api.git
+    git clone https://github.com/gitzoheb/url-shortener-api.git
     cd url-shortener-api
     ```
 
