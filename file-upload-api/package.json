@@ -8,7 +8,7 @@
     "dev": "nodemon src/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Zoheb Ansari",
   "license": "MIT",
   "type": "module",
   "dependencies": {
