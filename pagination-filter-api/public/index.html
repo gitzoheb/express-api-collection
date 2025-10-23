@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Items API Frontend</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Items Catalog</h1>
+    <p>Browse and filter items from the API</p>
+  </header>
+
+  <main>
+    <section id="filters">
+      <h2>Filters</h2>
+       <form id="filterForm">
+         <label for="category">Category:</label>
+         <select id="category" name="category">
+           <option value="">All</option>
+         </select>
+
+         <label for="price">Price:</label>
+         <select id="price" name="price">
+           <option value="">All</option>
+         </select>
+
+         <label for="brand">Brand:</label>
+         <select id="brand" name="brand">
+           <option value="">All</option>
+         </select>
+
+        <button type="submit">Apply Filters</button>
+        <button type="button" id="clearFilters">Clear Filters</button>
+      </form>
+    </section>
+
+    <section id="pagination">
+      <h2>Pagination</h2>
+      <label for="limit">Items per page:</label>
+      <select id="limit">
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="20">20</option>
+      </select>
+
+      <button id="prevPage" disabled>Previous</button>
+      <span id="pageInfo">Page 1 of 1</span>
+      <button id="nextPage" disabled>Next</button>
+    </section>
+
+    <section id="items">
+      <h2>Items</h2>
+      <div id="loading">Loading...</div>
+      <ul id="itemsList"></ul>
+      <div id="message"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
