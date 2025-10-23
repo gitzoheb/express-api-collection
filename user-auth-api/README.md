@@ -55,6 +55,7 @@ This is a simple User Authentication API built with Node.js, Express, and MongoD
 
 - **URL:** `/api/users/register`
 - **Method:** `POST`
+- **Note:** Only emails from Google (`gmail.com`), Yahoo (`yahoo.com`), and Microsoft (`outlook.com`, `hotmail.com`) are allowed for registration.
 - **Body:**
 
   ```json

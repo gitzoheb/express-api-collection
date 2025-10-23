@@ -10,6 +10,14 @@ const registerUser = async (req, res) => {
   // Destructure name, email, and password from the request body
   const { name, email, password } = req.body;
 
+  // Simple domain validation
+  const allowedDomains = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com'];
+  const domain = email.split('@')[1];
+
+  if (!allowedDomains.includes(domain)) {
+    return res.status(400).json({ message: 'Only Google, Yahoo, and Microsoft domains are allowed' });
+  }
+
   try {
     // Check if a user with the given email already exists
     const userExists = await User.findOne({ email });
