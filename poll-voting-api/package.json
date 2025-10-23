@@ -1,0 +1,20 @@
+{
+  "name": "poll-voting-api",
+  "version": "1.0.0",
+  "description": "A simple poll voting API built with Node.js and Express, using in-memory storage.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "Zoheb Ansari",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
