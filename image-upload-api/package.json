@@ -1,7 +1,7 @@
 {
-  "name": "file-upload-api",
+  "name": "image-upload-api",
   "version": "1.0.0",
-  "description": "A simple Express API for handling file uploads.",
+  "description": "A simple Express API for handling image uploads.",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",

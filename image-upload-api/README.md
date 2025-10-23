@@ -1,6 +1,6 @@
-# File Upload API
+# Image Upload API
 
-This document provides a comprehensive overview of the File Upload API, designed to help developers understand its functionality and how to integrate with it.
+This document provides a comprehensive overview of the Image Upload API, designed to help developers understand its functionality and how to integrate with it.
 
 ## Table of Contents
 
@@ -13,11 +13,11 @@ This document provides a comprehensive overview of the File Upload API, designed
 
 ## Overview
 
-The File Upload API is a simple Express.js-based service that allows users to upload image files. It handles multipart/form-data requests, validates files, and saves them to the server's file system.
+The Image Upload API is a simple Express.js-based service that allows users to upload image files. It handles multipart/form-data requests, validates files, and saves them to the server's file system.
 
 ## Features
 
--   **File Upload:** Supports image file uploads via a RESTful endpoint.
+-   **Image Upload:** Supports image file uploads via a RESTful endpoint.
 -   **File Type Validation:** Restricts uploads to specific image formats (`jpeg`, `jpg`, `png`).
 -   **File Size Limit:** Enforces a maximum file size of 5MB.
 -   **Persistent Storage:** Saves uploaded files directly to the `src/uploads/` directory.
@@ -25,11 +25,11 @@ The File Upload API is a simple Express.js-based service that allows users to up
 
 ## API Endpoint
 
-The API exposes a single endpoint for handling file uploads.
+The API exposes a single endpoint for handling image uploads.
 
 ### POST /upload
 
-This endpoint processes the file upload. The request must be `multipart/form-data`.
+This endpoint processes the image upload. The request must be `multipart/form-data`.
 
 -   **URL:** `/upload`
 -   **Method:** `POST`
@@ -79,7 +79,7 @@ This endpoint processes the file upload. The request must be `multipart/form-dat
 
 ## How It Works
 
-The API is built with **Express.js** and uses the **`multer`** middleware to handle file uploads.
+The API is built with **Express.js** and uses the **`multer`** middleware to handle image uploads.
 
 1.  **Request Handling:** When a `POST` request hits the `/upload` endpoint, the `multer` middleware intercepts it.
 2.  **Storage Engine (`multer.diskStorage`):**
