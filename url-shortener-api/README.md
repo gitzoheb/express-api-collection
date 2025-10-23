@@ -57,15 +57,86 @@ npm run dev
 
 The server will start on the port specified in your `.env` file (default is 5000). You can also run the application without hot-reloading using `npm start`.
 
-### Frontend Usage
+### Interacting with the Application
 
-1.  Open your web browser and navigate to `http://localhost:5000`.
-2.  Enter a long URL into the input field and click the "Shorten" button.
-3.  The shortened URL will be displayed below the form. You can click on it to be redirected to the original URL.
+There are two ways to use the URL shortener:
 
-### Backend Usage (API)
+1.  **Frontend Interface**: Open your web browser and navigate to `http://localhost:5000`. You can use the simple form to enter a long URL and get a shortened version.
+2.  **API**: For programmatic use, you can interact directly with the REST API.
 
-The API provides endpoints for shortening URLs and redirecting to the original URLs.
+## API Workflow
+
+This API is public and does not require authentication. You can directly start making requests to the available endpoints.
+
+The primary workflow for using the URL Shortener API is as follows:
+
+### 1. Shorten a Long URL
+
+To shorten a long URL, you send a `POST` request to the `/shorten` endpoint with the URL you want to shorten in the request body.
+
+#### Request
+
+The request body must be a JSON object containing the `originalUrl`.
+
+-   **Endpoint**: `POST /shorten`
+-   **Headers**: `Content-Type: application/json`
+-   **Body**:
+    ```json
+    {
+      "originalUrl": "https://www.your-long-url.com/with/a/very/long/path"
+    }
+    ```
+
+#### Examples
+
+Here are examples of how to make the request using `curl` and JavaScript's `fetch`.
+
+**curl**
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"originalUrl": "https://www.your-long-url.com/with/a/very/long/path"}' http://localhost:5000/shorten
+```
+
+**JavaScript Fetch**
+
+```javascript
+async function shortenUrl(longUrl) {
+  try {
+    const response = await fetch('http://localhost:5000/shorten', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ originalUrl: longUrl }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log('Shortened URL:', data.shortUrl);
+    return data;
+  } catch (error) {
+    console.error('Error shortening URL:', error);
+  }
+}
+
+// Example usage:
+shortenUrl('https://www.your-long-url.com/with/a/very/long/path');
+```
+
+#### Response
+
+The API will respond with a JSON object containing the details of the shortened URL, including the `shortUrl`. The exact response depends on whether the URL has been shortened before. See the [API Endpoints](#api-endpoints) section for detailed response examples.
+
+### 2. Use the Short URL
+
+Once you have the `shortUrl`, you can use it in your browser or application. When a user accesses the short URL, the API will automatically redirect them to the original long URL.
+
+For example, if you navigate to `http://localhost:5000/H1j2k3l4` (using the `shortId` from the response), you will be redirected to the original URL.
+
+This redirection is handled by the `GET /:shortId` endpoint, which also tracks the number of clicks on the link.
 
 ## API Endpoints
 
