@@ -23,3 +23,4 @@ git clone https://github.com/gitzoheb/express-api-collection.git
 | [Poll Voting API](./poll-voting-api/)               | A simple Poll Voting API built with Node.js, Express, and MongoDB.       |
 | [Task Management API](./task-management-api/)       | A simple Task Management API built with Node.js, Express, and MongoDB.   |
 | [Text Translator API](./text-translator-api/)       | A simple web application for translating text between multiple languages. |
+| [Pagination and Filter API](./pagination-filter-api/) | An API for pagination and filtering data built with Node.js and Express.  |
