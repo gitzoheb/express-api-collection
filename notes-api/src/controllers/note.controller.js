@@ -6,7 +6,7 @@ export const getAllNotes = (req, res) => {
 
 export const getNoteById = (req, res) => {
   const id = parseInt(req.params.id);
-  const note = notes.find(n => n.id === id);
+  const note = notes.find((n) => n.id === id);
   if (!note) {
     return res.status(404).json({ error: "Note not found" });
   }
@@ -19,9 +19,9 @@ export const createNote = (req, res) => {
     return res.status(400).json({ error: "Title and content are required" });
   }
   const newNote = {
-    id: notes.length > 0 ? Math.max(...notes.map(n => n.id)) + 1 : 1,
+    id: notes.length > 0 ? Math.max(...notes.map((n) => n.id)) + 1 : 1,
     title,
-    content
+    content,
   };
   notes.push(newNote);
   res.status(201).json({ success: true, data: newNote });
@@ -33,7 +33,7 @@ export const updateNote = (req, res) => {
   if (!title || !content) {
     return res.status(400).json({ error: "Title and content are required" });
   }
-  const noteIndex = notes.findIndex(n => n.id === id);
+  const noteIndex = notes.findIndex((n) => n.id === id);
   if (noteIndex === -1) {
     return res.status(404).json({ error: "Note not found" });
   }
@@ -43,7 +43,7 @@ export const updateNote = (req, res) => {
 
 export const deleteNote = (req, res) => {
   const id = parseInt(req.params.id);
-  const noteIndex = notes.findIndex(n => n.id === id);
+  const noteIndex = notes.findIndex((n) => n.id === id);
   if (noteIndex === -1) {
     return res.status(404).json({ error: "Note not found" });
   }
