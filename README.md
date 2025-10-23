@@ -22,3 +22,4 @@ git clone https://github.com/gitzoheb/express-api-collection.git
 | [Notes API](./notes-api/)                           | A simple Notes API built with Node.js, Express, and MongoDB.              |
 | [Poll Voting API](./poll-voting-api/)               | A simple Poll Voting API built with Node.js, Express, and MongoDB.       |
 | [Task Management API](./task-management-api/)       | A simple Task Management API built with Node.js, Express, and MongoDB.   |
+| [Text Translator API](./text-translator-api/)       | A simple web application for translating text between multiple languages. |
