@@ -1,134 +1,108 @@
+# File Upload API
 
-# File Upload API with Node.js, Express, and Multer
+This document provides a comprehensive overview of the File Upload API, designed to help developers understand its functionality and how to integrate with it.
 
-This project is a simple and functional File Upload API built with Node.js, Express, and Multer. It provides an endpoint for uploading single image files, with basic file type validation and a static frontend for interaction.
+## Table of Contents
+
+-   [Overview](#overview)
+-   [Features](#features)
+-   [API Endpoint](#api-endpoint)
+    -   [POST /upload](#post-upload)
+-   [How It Works](#how-it-works)
+-   [Getting Started](#getting-started)
+
+## Overview
+
+The File Upload API is a simple Express.js-based service that allows users to upload image files. It handles multipart/form-data requests, validates files, and saves them to the server's file system.
 
 ## Features
 
-- **File Upload:** Upload single image files (`.jpg`, `.jpeg`, `.png`).
-- **File Storage:** Uploaded files are stored in the `src/uploads` directory.
-- **API Response:** The API responds with JSON data containing the uploaded file's name, path, and size.
-- **File Type Validation:** Basic validation to ensure only image files are uploaded.
-- **Static Frontend:** A simple HTML frontend to interact with the API.
+-   **File Upload:** Supports image file uploads via a RESTful endpoint.
+-   **File Type Validation:** Restricts uploads to specific image formats (`jpeg`, `jpg`, `png`).
+-   **File Size Limit:** Enforces a maximum file size of 5MB.
+-   **Persistent Storage:** Saves uploaded files directly to the `src/uploads/` directory.
+-   **Descriptive Responses:** Returns clear JSON responses for both successful uploads and errors.
 
-## Getting Started
+## API Endpoint
 
-### Prerequisites
+The API exposes a single endpoint for handling file uploads.
 
-- [Node.js](https://nodejs.org/) installed on your machine.
+### POST /upload
 
-### Installation
+This endpoint processes the file upload. The request must be `multipart/form-data`.
 
-1. **Clone the repository:**
+-   **URL:** `/upload`
+-   **Method:** `POST`
+-   **Body:** `multipart/form-data`
+    -   **key**: `image`
+    -   **value**: The image file you want to upload.
 
-   ```bash
-   git clone https://github.com/your-username/file-upload-api.git
-   ```
+#### Successful Response
 
-2. **Navigate to the project directory:**
+-   **Status Code:** `200 OK`
+-   **Content:** A JSON object containing details of the uploaded file.
 
-   ```bash
-   cd file-upload-api
-   ```
+**Example Response:**
 
-3. **Install the dependencies:**
-
-   ```bash
-   npm install
-   ```
-
-### Running the Application
-
-1. **Start the server:**
-
-   ```bash
-   npm start
-   ```
-
-2. **Access the application:**
-
-   Open your web browser and navigate to `http://localhost:3000`. You will see a simple file upload interface.
-
-## How It Works
-
-### Folder Structure
-
-The project follows a clear and organized folder structure:
-
-```
-file-upload-api/
-├── src/
-│   ├── controllers/
-│   │   └── uploadController.js  // Handles file upload logic
-│   ├── public/                  // Contains the static frontend
-│   │   ├── index.html
-│   │   ├── style.css
-│   │   └── script.js
-│   ├── routes/
-│   │   └── uploadRoutes.js      // Defines the API routes
-│   ├── uploads/                 // Stores uploaded files
-│   └── index.js                 // Main entry point of the application
-├── .gitignore
-├── package.json
-└── README.md
+```json
+{
+  "fileName": "1678886400000.png",
+  "filePath": "src\\uploads\\1678886400000.png",
+  "fileSize": 102400
+}
 ```
 
-### Backend
+#### Error Responses
 
-- **`src/index.js`:** This is the main entry point of the application. It sets up the Express server, defines the port, and configures the middleware. It also serves the static files from the `src/public` directory and uses the API routes defined in `src/routes/uploadRoutes.js`.
+-   **Status Code:** `400 Bad Request`
 
-- **`src/routes/uploadRoutes.js`:** This file defines the API routes for file uploads. It imports the `uploadFile` controller and associates it with the `POST /upload` route.
+**Possible Error Messages:**
 
-- **`src/controllers/uploadController.js`:** This is where the core file upload logic resides. It uses the `multer` library to handle `multipart/form-data`, which is used for uploading files. Here's a breakdown of the key components:
-
-  - **`storage`:** This `multer` configuration determines where the uploaded files are stored. In this case, they are saved in the `src/uploads` directory with a unique filename generated using `Date.now()`.
-
-  - **`fileFilter`:** This function provides basic validation to ensure that only files with `.jpg`, `.jpeg`, or `.png` extensions are uploaded. If an invalid file type is detected, an error is returned.
-
-  - **`upload`:** This initializes `multer` with the defined `storage` and `fileFilter`. It also sets a file size limit of 5MB.
-
-  - **`uploadFile`:** This is the main controller function that handles the file upload request. It uses the `upload` middleware to process the file and then sends a JSON response containing the file's details.
-
-### Frontend
-
-- **`src/public/index.html`:** This is the main HTML file that provides the structure for the file upload interface. It includes a form with a file input and a button to trigger the upload.
-
-- **`src/public/style.css`:** This file contains the basic styling for the frontend, making it more visually appealing.
-
-- **`src/public/script.js`:** This file handles the client-side logic for the file upload. It listens for the form submission, creates a `FormData` object, and sends a `POST` request to the `/api/upload` endpoint using the `fetch` API. It then displays the server's response to the user.
-
-## API Usage
-
-### `POST /api/upload`
-
-This endpoint is used to upload a single image file.
-
-- **Request:**
-
-  - **Method:** `POST`
-  - **Headers:** `Content-Type: multipart/form-data`
-  - **Body:** The request body should contain a single file with the field name `image`.
-
-- **Response:**
-
-  - **Success (200):**
-
+-   If no file is selected:
     ```json
     {
-      "fileName": "1679543210987.png",
-      "filePath": "src/uploads/1679543210987.png",
-      "fileSize": 12345
+      "message": "No file selected!"
     }
     ```
-
-  - **Error (400):**
-
+-   If the file type is not an image (`jpeg`, `jpg`, `png`):
     ```json
     {
       "message": "Error: Images Only!"
     }
     ```
+-   If the file size exceeds the 5MB limit:
+    ```json
+    {
+      "message": "File too large"
+    }
+    ```
 
-## Conclusion
+## How It Works
 
-This project serves as a great starting point for understanding how to build a file upload API with Node.js and Express. By following the code and the explanations in this README, you should have a solid understanding of how the different parts of the application work together.
+The API is built with **Express.js** and uses the **`multer`** middleware to handle file uploads.
+
+1.  **Request Handling:** When a `POST` request hits the `/upload` endpoint, the `multer` middleware intercepts it.
+2.  **Storage Engine (`multer.diskStorage`):**
+    -   **Destination:** It's configured to save all incoming files to the `src/uploads/` directory on the server.
+    -   **Filename:** To prevent name collisions, each file is renamed using the current timestamp followed by its original extension (e.g., `1678886400000.png`).
+3.  **File Validation:**
+    -   **File Filter:** A filter is in place to check both the file's MIME type and its extension. It only permits files with `.jpeg`, `.jpg`, or `.png` extensions and corresponding MIME types.
+    -   **Size Limit:** `multer` is configured with a limit of 5MB. Any file larger than this will be rejected.
+4.  **Controller Logic:**
+    -   If the file passes validation, it is saved to the disk. The controller then sends a `200` response with the file's new name, path, and size.
+    -   If an error occurs during the upload process (e.g., validation failure), the controller catches it and returns a `400` response with a descriptive error message.
+
+## Getting Started
+
+To run this API on your local machine, follow these steps:
+
+1.  **Install Dependencies:**
+    ```sh
+    npm install
+    ```
+2.  **Start the Server:**
+    ```sh
+    npm start
+    ```
+
+The server will start, and you can begin sending requests to the `/upload` endpoint.
