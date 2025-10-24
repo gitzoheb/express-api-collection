@@ -29,12 +29,13 @@ src/
 │   └── translate.controller.js  # API endpoint logic
 ├── routes/
 │   └── translate.routes.js      # Route definitions
-├── utils/
-│   └── translator.js            # Lingva.ml API integration
-└── public/
-    ├── index.html         # Frontend HTML
-    ├── script.js          # Frontend JavaScript
-    └── style.css          # Frontend styling
+└── utils/
+    └── translator.js            # Lingva.ml API integration
+
+public/
+├── index.html         # Frontend HTML
+├── script.js          # Frontend JavaScript
+└── style.css          # Frontend styling
 ```
 
 ### Key Components
@@ -53,7 +54,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static('src/public'));
+app.use(express.static('public'));
 
 app.use('/translate', translateRoutes);
 
