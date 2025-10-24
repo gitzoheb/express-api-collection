@@ -211,7 +211,7 @@ Redirects a short URL to its original destination.
 
 ## Developer Notes
 
--   **Code Structure**: The project follows a standard Express application structure, with code organized into `config`, `controllers`, `middleware`, `models`, `public`, and `routes` directories.
+-   **Code Structure**: The project follows a standard Express application structure, with code organized into `src` directory (containing `config`, `controllers`, `middleware`, `models`, `routes`), and a separate `public` directory.
 -   **ES Modules**: The project uses ES Modules (`import`/`export`) syntax.
 -   **Error Handling**: A central error handling middleware is used to catch and handle errors.
 -   **Dependencies**: Key dependencies include `express`, `mongoose`, `cors`, `dotenv`, and `nanoid`.
