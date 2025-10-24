@@ -5,7 +5,7 @@ import pollRoutes from './routes/poll.routes.js';
 const app = express();
 
 app.use(express.json());
-app.use(express.static(path.join(process.cwd(), 'src', 'public')));
+app.use(express.static(path.join(process.cwd(), 'public')));
 
 app.use('/polls', pollRoutes);
 

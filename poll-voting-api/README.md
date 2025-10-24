@@ -37,7 +37,7 @@ The app runs on a single server, serving both API and static files. Data is ephe
 
   const app = express();
   app.use(express.json());
-  app.use(express.static(path.join(process.cwd(), 'src', 'public')));
+  app.use(express.static(path.join(process.cwd(), 'public')));
   app.use('/polls', pollRoutes);
   // Error handling middleware for 404 and 500
   app.listen(3000, () => console.log('Server running'));
@@ -132,17 +132,17 @@ All responses are JSON with `{ "success": boolean, "data": ... }` or `{ "success
 ## Project Structure
 
 ```
+public/
+├── index.html          # Frontend HTML
+├── css/
+│   └── styles.css      # Styles
+└── js/
+    └── app.js          # Frontend JavaScript
 src/
 ├── controllers/
 │   └── poll.controllers.js  # Poll logic and data handling
 ├── routes/
 │   └── poll.routes.js      # API route definitions
-├── public/
-│   ├── index.html          # Frontend HTML
-│   ├── css/
-│   │   └── styles.css      # Styles
-│   └── js/
-│       └── app.js          # Frontend JavaScript
 └── index.js                # Server entry point
 ```
 
