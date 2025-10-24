@@ -1,12 +1,3 @@
-# Dependencies
-/node_modules
-
-# Production
-/build
-
-# Miscellaneous
-npm-debug.log
-yarn-error.log
-
-# Environment variables
+node_modules
+.gitignore
 .env
