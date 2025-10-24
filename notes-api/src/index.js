@@ -3,7 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(express.static('src/public'));
+app.use(express.static('public'));
 
 import noteRoutes from './routes/note.routes.js';
 app.use('/notes', noteRoutes);

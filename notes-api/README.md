@@ -88,14 +88,14 @@ curl -X DELETE http://localhost:3000/notes/1
 ## Code Implementation
 
 ### Application Entry Point (`src/index.js`)
-This file sets up the Express application, defines the port, and integrates the note routes. It uses `express.json()` for parsing JSON request bodies and `express.static()` to serve static files from the `src/public` directory.
+This file sets up the Express application, defines the port, and integrates the note routes. It uses `express.json()` for parsing JSON request bodies and `express.static()` to serve static files from the `public` directory.
 ```D:/express-api-collection/notes-api/src/index.js#L1-13
 import express from 'express';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(express.static('src/public'));
+app.use(express.static('public'));
 
 import noteRoutes from './routes/note.routes.js';
 app.use('/notes', noteRoutes);
