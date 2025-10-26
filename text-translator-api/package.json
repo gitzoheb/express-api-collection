@@ -1,14 +1,14 @@
 {
   "name": "text-translator-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple web application for translating text between multiple languages using the Lingva.ml translation service.",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js"
   },
   "keywords": [],
-  "author": "Zoheb Ansari",
+  "author": "",
   "license": "MIT",
   "type": "module",
   "dependencies": {
