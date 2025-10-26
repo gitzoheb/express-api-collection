@@ -225,9 +225,7 @@ Translates text from source to target language.
 - `400`: `{"error": "Validation error message"}`
 - `500`: `{"error": "Translation failed. Please try again later."}`
 
-## Author
 
-Zoheb Ansari
 
 ## License
 
