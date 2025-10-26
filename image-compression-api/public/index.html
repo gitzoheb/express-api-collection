@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compression API</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Image Compression API</h1>
+            <p>Compress, resize, and convert your images with ease</p>
+        </header>
+
+        <section class="compression-section">
+            <h2>Single Image Compression</h2>
+            <form id="singleForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="singleImage">Select Image:</label>
+                    <input type="file" id="singleImage" name="image" accept="image/*" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="width">Width:</label>
+                        <input type="number" id="width" name="width" placeholder="Auto">
+                    </div>
+                    <div class="form-group">
+                        <label for="height">Height:</label>
+                        <input type="number" id="height" name="height" placeholder="Auto">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="format">Format:</label>
+                        <select id="format" name="format">
+                            <option value="jpeg">JPEG</option>
+                            <option value="png">PNG</option>
+                            <option value="webp">WebP</option>
+                            <option value="avif">AVIF</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quality">Quality (1-100):</label>
+                        <input type="number" id="quality" name="quality" value="80" min="1" max="100">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="fit">Fit:</label>
+                    <select id="fit" name="fit">
+                        <option value="cover">Cover</option>
+                        <option value="contain">Contain</option>
+                        <option value="fill">Fill</option>
+                        <option value="inside">Inside</option>
+                        <option value="outside">Outside</option>
+                    </select>
+                </div>
+
+                <div class="form-group checkboxes">
+                    <label>
+                        <input type="checkbox" id="download" name="download" value="true"> Download as file
+                    </label>
+                    <label>
+                        <input type="checkbox" id="uploadToStorage" name="uploadToStorage" value="true"> Upload to storage
+                    </label>
+                </div>
+
+                <button type="submit" id="compressBtn">Compress Image</button>
+            </form>
+        </section>
+
+        <section class="compression-section">
+            <h2>Batch Image Compression</h2>
+            <form id="batchForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="batchImages">Select Images (up to 10):</label>
+                    <input type="file" id="batchImages" name="images" accept="image/*" multiple required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="batchWidth">Width:</label>
+                        <input type="number" id="batchWidth" name="width" placeholder="Auto">
+                    </div>
+                    <div class="form-group">
+                        <label for="batchHeight">Height:</label>
+                        <input type="number" id="batchHeight" name="height" placeholder="Auto">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="batchFormat">Format:</label>
+                        <select id="batchFormat" name="format">
+                            <option value="jpeg">JPEG</option>
+                            <option value="png">PNG</option>
+                            <option value="webp">WebP</option>
+                            <option value="avif">AVIF</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="batchQuality">Quality (1-100):</label>
+                        <input type="number" id="batchQuality" name="quality" value="80" min="1" max="100">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="batchFit">Fit:</label>
+                    <select id="batchFit" name="fit">
+                        <option value="cover">Cover</option>
+                        <option value="contain">Contain</option>
+                        <option value="fill">Fill</option>
+                        <option value="inside">Inside</option>
+                        <option value="outside">Outside</option>
+                    </select>
+                </div>
+
+                <div class="form-group checkboxes">
+                    <label>
+                        <input type="checkbox" id="batchDownload" name="download" value="true"> Download as files
+                    </label>
+                    <label>
+                        <input type="checkbox" id="batchUploadToStorage" name="uploadToStorage" value="true"> Upload to storage
+                    </label>
+                </div>
+
+                <button type="submit" id="batchCompressBtn">Compress Batch</button>
+            </form>
+        </section>
+
+        <section class="results-section">
+            <h2>Results</h2>
+            <div id="results"></div>
+            <div id="loading" style="display: none;">Processing...</div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
