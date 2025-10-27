@@ -1,0 +1,25 @@
+{
+  "name": "qr-code-generator-api",
+  "version": "1.0.0",
+  "description": "API for generating QR codes from text or URLs",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": ["qr", "qrcode", "generator", "api"],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.1.0",
+    "qrcode": "^1.5.3",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.5",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

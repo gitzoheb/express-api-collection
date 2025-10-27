@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Converter API</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>File Converter API</h1>
+    <p>Convert PDF to Image or DOCX to PDF</p>
+
+    <div class="converter-section">
+      <h2>PDF to Image</h2>
+      <form id="pdfForm" enctype="multipart/form-data">
+        <input type="file" id="pdfFile" accept=".pdf" required>
+        <button type="submit">Convert to Image</button>
+      </form>
+      <div id="pdfResult"></div>
+    </div>
+
+    <div class="converter-section">
+      <h2>DOCX to PDF</h2>
+      <form id="docxForm" enctype="multipart/form-data">
+        <input type="file" id="docxFile" accept=".docx" required>
+        <button type="submit">Convert to PDF</button>
+      </form>
+      <div id="docxResult"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

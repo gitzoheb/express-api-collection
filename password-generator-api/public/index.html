@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Password Generator</h1>
+  </header>
+
+  <main>
+    <section class="generator">
+      <h2>Generate Secure Password</h2>
+      <form id="password-form">
+        <div class="form-group">
+          <label for="length">Password Length</label>
+          <input type="number" id="length" min="4" max="128" value="12">
+        </div>
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="uppercase" checked> Uppercase Letters</label>
+          <label><input type="checkbox" id="lowercase" checked> Lowercase Letters</label>
+          <label><input type="checkbox" id="numbers" checked> Numbers</label>
+          <label><input type="checkbox" id="symbols" checked> Symbols</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Generate Password</button>
+      </form>
+      <div id="password-display" class="password-display"></div>
+    </section>
+
+    <section class="validator">
+      <h2>Validate Password Strength</h2>
+      <div class="form-group">
+        <label for="validate-password">Enter Password</label>
+        <input type="password" id="validate-password" placeholder="Enter password to validate">
+      </div>
+      <button id="validate-btn" class="btn btn-secondary">Validate Strength</button>
+      <div id="strength-result" class="strength-result"></div>
+    </section>
+
+    <div id="message" class="message"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

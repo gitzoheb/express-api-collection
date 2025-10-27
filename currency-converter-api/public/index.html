@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Currency Converter</h1>
+  </header>
+
+  <main>
+    <section class="converter">
+      <h2>Convert Currency</h2>
+      <div class="converter-container">
+        <div class="input-group">
+          <label for="amount">Amount</label>
+          <input type="number" id="amount" step="0.01" min="0" placeholder="Enter amount">
+        </div>
+        <div class="currency-group">
+          <div class="form-group">
+            <label for="from">From</label>
+            <select id="from">
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="GBP">GBP</option>
+              <option value="JPY">JPY</option>
+              <option value="CAD">CAD</option>
+              <option value="AUD">AUD</option>
+              <option value="INR">INR</option>
+            </select>
+          </div>
+          <div class="swap-icon">⇄</div>
+          <div class="form-group">
+            <label for="to">To</label>
+            <select id="to">
+              <option value="EUR">EUR</option>
+              <option value="USD">USD</option>
+              <option value="GBP">GBP</option>
+              <option value="JPY">JPY</option>
+              <option value="CAD">CAD</option>
+              <option value="AUD">AUD</option>
+              <option value="INR" selected>INR</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div id="result" class="result"></div>
+    </section>
+
+    <section class="rates">
+      <h2>Exchange Rates (Base: USD)</h2>
+      <button id="load-rates" class="btn btn-secondary">Load Rates</button>
+      <div id="rates-container"></div>
+    </section>
+
+    <div id="message" class="message"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

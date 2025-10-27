@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Metadata Scraper</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="container">
+     <header>
+       <h1>🌐 URL Metadata Scraper</h1>
+       <p>Extract Open Graph tags, meta tags, and screenshots from any URL</p>
+     </header>
+
+    <main>
+      <div class="input-section">
+          <div class="input-group">
+            <label for="url">🔗 Enter URL:</label>
+            <input type="url" id="url" placeholder="https://example.com" />
+          </div>
+        
+          <div class="options">
+            <label class="checkbox-label" title="Capture a screenshot of the webpage">
+              <input type="checkbox" id="screenshot"> 📸 Include Screenshot
+            </label>
+          </div>
+
+           <button id="scrapeBtn" class="btn-primary">
+             🚀 Scrape Metadata
+           </button>
+        </div>
+
+        <div id="loading" class="loading hidden">
+         <div class="spinner"></div>
+         <p id="loadingText">Fetching metadata...</p>
+         <div class="progress-bar">
+           <div class="progress-fill" id="progressFill"></div>
+         </div>
+       </div>
+
+        <div id="result" class="result hidden">
+          <div class="result-header">
+            <h2>📊 Metadata Result</h2>
+             <div class="result-actions">
+               <button id="copyBtn" class="btn-secondary">📋 Copy</button>
+               <button id="exportPdfBtn" class="btn-secondary">📄 PDF</button>
+               <button id="exportCsvBtn" class="btn-secondary">📊 CSV</button>
+             </div>
+          </div>
+
+          <div class="metadata-content">
+            <div class="metadata-card">
+              <h3>📄 Basic Information</h3>
+              <div id="basicInfo"></div>
+            </div>
+
+            <div class="metadata-card" id="screenshotCard" style="display: none;">
+              <h3>📸 Screenshot</h3>
+              <div id="screenshotContainer"></div>
+            </div>
+
+            <div class="metadata-card">
+              <h3>🔗 Open Graph Tags</h3>
+              <div id="ogTags"></div>
+            </div>
+
+            <div class="metadata-card">
+              <h3>🐦 Twitter Tags</h3>
+              <div id="twitterTags"></div>
+            </div>
+
+            <div class="metadata-card">
+              <h3>🏷️ Other Meta Tags</h3>
+              <div id="otherTags"></div>
+            </div>
+
+            <div class="metadata-card">
+              <h3>📋 Structured Data</h3>
+              <div id="structuredData"></div>
+            </div>
+
+            <div class="metadata-card">
+              <h3>💻 Raw JSON</h3>
+              <pre id="rawJson"></pre>
+            </div>
+          </div>
+        </div>
+
+       <div id="error" class="error hidden" role="alert">
+         <h3>❌ Error</h3>
+         <p id="errorMessage"></p>
+         <button id="retryBtn" class="btn-secondary">🔄 Try Again</button>
+        </div>
+     </main>
+
+     <footer>
+      <p>Built with Express, Cheerio, and Puppeteer</p>
+    </footer>
+  </div>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+   <script src="app.js"></script>
+ </body>
+ </html>
+
